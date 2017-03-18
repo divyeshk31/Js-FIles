@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by divyeshk31 (http://jsbin.com/duluvix/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  height:100vh;
+  width:100vw;
+  background-color:grey;
+  position: fixed;
+}
+    
+#box {
+    position:absolute; 
+    top:50%; 
+    left:50%;
+    width:50px; height:50px;          
+    background-color:black;
+}
+</style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script id="jsbin-javascript">
+var body=document.getElementsByTagName('body')[0];
+var box=document.getElementById('box');
+var interval;
+var gameB=body.getBoundingClientRect();
+var boxB=box.getBoundingClientRect();
+	function move (event) {
+	boxB=box.getBoundingClientRect();
+	if((boxB.left<=gameB.left)||(boxB.top<=gameB.top)||(boxB.right>=gameB.right)||(boxB.bottom>=gameB.bottom))
+	{
+		alert("gameover");
+		
+	}
+	if (event.keyCode==37){
+		console.log("left");
+		 box.style.left=(boxB.left-10)+"px";
+	}
+	else if (event.keyCode==38){
+		console.log("top");
+		box.style.top=(boxB.top-10)+"px";
+
+	}
+	else if (event.keyCode==39){
+		console.log("right");
+		box.style.left=(boxB.left+10)+"px";
+
+	}
+	else if (event.keyCode==40){
+		console.log("down");
+		box.style.top=(boxB.top+10)+"px";
+	}
+}
+window.addEventListener('keydown',move);
+</script>
+</body>
+</html>
